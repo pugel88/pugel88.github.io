@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Pop_Greater_1.js"></script>
+        <script src="data/Capital_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[14.158194822841995,-126.40182915228736],[55.47803107536376,-65.43300875031012]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_OpenStreetMap_0 = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_Pop_Greater_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['adm1name'] !== null ? Autolinker.link(String(feature.properties['adm1name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Population</th>\
+                        <td>' + (feature.properties['pop_max'] !== null ? Autolinker.link(String(feature.properties['pop_max'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Pop_Greater_1_0(feature) {
+            if (feature.properties['q2wHide_scalerank'] >= 0.000000 && feature.properties['q2wHide_scalerank'] <= 1.600000 ) {
+                return {
+                pane: 'pane_Pop_Greater_1',
+                radius: 1.6,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(44,156,160,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 1.600000 && feature.properties['q2wHide_scalerank'] <= 3.200000 ) {
+                return {
+                pane: 'pane_Pop_Greater_1',
+                radius: 2.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(44,131,160,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 3.200000 && feature.properties['q2wHide_scalerank'] <= 4.800000 ) {
+                return {
+                pane: 'pane_Pop_Greater_1',
+                radius: 3.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(44,86,160,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 4.800000 && feature.properties['q2wHide_scalerank'] <= 6.400000 ) {
+                return {
+                pane: 'pane_Pop_Greater_1',
+                radius: 4.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(1,5,255,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 6.400000 && feature.properties['q2wHide_scalerank'] <= 8.000000 ) {
+                return {
+                pane: 'pane_Pop_Greater_1',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(69,44,160,1.0)',
+            }
+            }
+        }
+        map.createPane('pane_Pop_Greater_1');
+        map.getPane('pane_Pop_Greater_1').style.zIndex = 401;
+        map.getPane('pane_Pop_Greater_1').style['mix-blend-mode'] = 'normal';
+        var layer_Pop_Greater_1 = new L.geoJson(json_Pop_Greater_1, {
+            attribution: '',
+            pane: 'pane_Pop_Greater_1',
+            onEachFeature: pop_Pop_Greater_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Pop_Greater_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Pop_Greater_1);
+        map.addLayer(layer_Pop_Greater_1);
+        function pop_Capital_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['scalerank'] !== null ? Autolinker.link(String(feature.properties['scalerank'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['natscale'] !== null ? Autolinker.link(String(feature.properties['natscale'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['labelrank'] !== null ? Autolinker.link(String(feature.properties['labelrank'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['featurecla'] !== null ? Autolinker.link(String(feature.properties['featurecla'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['namepar'] !== null ? Autolinker.link(String(feature.properties['namepar'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['namealt'] !== null ? Autolinker.link(String(feature.properties['namealt'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['diffascii'] !== null ? Autolinker.link(String(feature.properties['diffascii'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nameascii'] !== null ? Autolinker.link(String(feature.properties['nameascii'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['adm0cap'] !== null ? Autolinker.link(String(feature.properties['adm0cap'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>capalt</strong><br />' + (feature.properties['capalt'] !== null ? Autolinker.link(String(feature.properties['capalt'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>capin</strong><br />' + (feature.properties['capin'] !== null ? Autolinker.link(String(feature.properties['capin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['worldcity'] !== null ? Autolinker.link(String(feature.properties['worldcity'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['megacity'] !== null ? Autolinker.link(String(feature.properties['megacity'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sov0name'] !== null ? Autolinker.link(String(feature.properties['sov0name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sov_a3'] !== null ? Autolinker.link(String(feature.properties['sov_a3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['adm0name'] !== null ? Autolinker.link(String(feature.properties['adm0name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['adm0_a3'] !== null ? Autolinker.link(String(feature.properties['adm0_a3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['adm1name'] !== null ? Autolinker.link(String(feature.properties['adm1name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['iso_a2'] !== null ? Autolinker.link(String(feature.properties['iso_a2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['note'] !== null ? Autolinker.link(String(feature.properties['note'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['latitude'] !== null ? Autolinker.link(String(feature.properties['latitude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longitude'] !== null ? Autolinker.link(String(feature.properties['longitude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['changed'] !== null ? Autolinker.link(String(feature.properties['changed'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['namediff'] !== null ? Autolinker.link(String(feature.properties['namediff'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['diffnote'] !== null ? Autolinker.link(String(feature.properties['diffnote'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pop_max'] !== null ? Autolinker.link(String(feature.properties['pop_max'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pop_min'] !== null ? Autolinker.link(String(feature.properties['pop_min'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pop_other'] !== null ? Autolinker.link(String(feature.properties['pop_other'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['rank_max'] !== null ? Autolinker.link(String(feature.properties['rank_max'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['rank_min'] !== null ? Autolinker.link(String(feature.properties['rank_min'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geonameid'] !== null ? Autolinker.link(String(feature.properties['geonameid'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['meganame'] !== null ? Autolinker.link(String(feature.properties['meganame'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ls_name'] !== null ? Autolinker.link(String(feature.properties['ls_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ls_match'] !== null ? Autolinker.link(String(feature.properties['ls_match'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['checkme'] !== null ? Autolinker.link(String(feature.properties['checkme'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['min_zoom'] !== null ? Autolinker.link(String(feature.properties['min_zoom'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Capital_2_0() {
+            return {
+                pane: 'pane_Capital_2',
+                radius: 10.999999999999998,
+                opacity: 1,
+                color: 'rgba(184,8,8,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,8,8,1.0)',
+            }
+        }
+        function style_Capital_2_1() {
+            return {
+                pane: 'pane_Capital_2',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(255,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,0,1.0)',
+            }
+        }
+        map.createPane('pane_Capital_2');
+        map.getPane('pane_Capital_2').style.zIndex = 402;
+        map.getPane('pane_Capital_2').style['mix-blend-mode'] = 'normal';
+        var layer_Capital_2 = new L.geoJson.multiStyle(json_Capital_2, {
+            attribution: '',
+            pane: 'pane_Capital_2',
+            onEachFeature: pop_Capital_2,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Capital_2_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Capital_2_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_Capital_2);
+        map.addLayer(layer_Capital_2);
+        setBounds();
+        </script>
+    </body>
+</html>
